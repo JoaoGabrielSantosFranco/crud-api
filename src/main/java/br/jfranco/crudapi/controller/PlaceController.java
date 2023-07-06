@@ -34,6 +34,7 @@ public class PlaceController {
     @PutMapping
     public Place update(@RequestBody Place place) {
         if (place.getId() > 0) {
+            place.setUpdatedAt(new java.sql.Date(System.currentTimeMillis()));
             return placeRepository.save(place);
         }
         return null;

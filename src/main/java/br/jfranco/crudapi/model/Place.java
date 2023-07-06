@@ -1,5 +1,6 @@
 package br.jfranco.crudapi.model;
 
+import java.sql.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,17 +15,22 @@ public class Place {
     String state;
     String city;
     String slug;
+    Date createdAt = new java.sql.Date(System.currentTimeMillis());
+    Date updatedAt;
 
     public Place() {
 
     }
 
-    public Place(long id, String name, String state, String city, String slug) {
+    public Place(long id, String name, String state, String city, String slug, Date createdAt, Date updatedAt) {
+
         this.id = id;
         this.name = name;
         this.state = state;
         this.city = city;
         this.slug = slug;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public long getId() {
@@ -65,6 +71,22 @@ public class Place {
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
 }
